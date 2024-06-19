@@ -1,25 +1,34 @@
-package net.tv.twitch.chrono_fish.casino;
+package net.tv.twitch.chrono_fish.casino.ShopPack;
 
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.Inventory;
 
-import java.util.UUID;
-
 public class ShopVillager {
 
-    private final UUID id;
-    private final Location shopLoc;
-    private final Villager villager;
-    private final Inventory shopInv;
-    private final Component invName;
+    Inventory shopInv;
+    Villager shopVillager;
+    Component invName = Component.text("casino shop");
 
-    public ShopVillager(Location loc){
-        id = UUID.randomUUID();
-        shopLoc = loc;
-        villager = shopLoc.getWorld().spawnEntity(shopLoc, EntityType.VILLAGER).
+    public ShopVillager(Villager shopVillager){
+        this.shopVillager = shopVillager;
+        this.shopInv = Bukkit.createInventory(shopVillager,27,invName);
+
+        shopVillager.customName(Component.text("casino shop"));
+        shopVillager.setCustomNameVisible(true);
     }
 
+    public ShopVillager(Location location){
+        this.shopVillager = (Villager) location.getWorld().spawnEntity(location, EntityType.VILLAGER);
+        this.shopInv = Bukkit.createInventory(shopVillager,27,invName);
+        shopVillager.customName(Component.text("casino shop"));
+        shopVillager.setCustomNameVisible(true);
+    }
+
+    public Inventory getShopInv(){
+        return shopInv;
+    }
 }
