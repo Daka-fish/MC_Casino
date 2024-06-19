@@ -3,9 +3,11 @@ package net.tv.twitch.chrono_fish.casino.ShopPack;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class ShopVillager {
 
@@ -19,6 +21,8 @@ public class ShopVillager {
 
         shopVillager.customName(Component.text("casino shop"));
         shopVillager.setCustomNameVisible(true);
+
+        this.shopInv.setItem(11, new ItemStack(Material.BREAD));
     }
 
     public ShopVillager(Location location){
