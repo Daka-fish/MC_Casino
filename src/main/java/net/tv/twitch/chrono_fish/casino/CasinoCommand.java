@@ -14,13 +14,12 @@ public class CasinoCommand implements CommandExecutor {
         if(sender instanceof Player){
             Player snd = (Player) sender;
             Location sndLoc = snd.getLocation();
+
             if(command.getName().equalsIgnoreCase("shop")){
                 new ShopVillager((sndLoc));
-                snd.sendMessage(
-                        "You summon a villager at ["+sndLoc.x()+", "+sndLoc.y()+", "+sndLoc.z()+"]");
+                snd.sendMessage("You summon a villager at ["+sndLoc.x()+", "+sndLoc.y()+", "+sndLoc.z()+"]");
             }
         }
-
         return false;
     }
 }
